@@ -12,17 +12,21 @@ public class Hospital {
     public Hospital(String id, String address, String district, String category, String emergencyRoom,
                     String name, String subdivision) {
 
-        String[] str = district.split(" ");
+
 
         this.id = id;
         this.address = address;
-        this.district = str[0] + " " + str[1];
         this.category = category;
         this.emergencyRoom = emergencyRoom;
         this.name = name;
         this.subdivision = subdivision;
+        setDistrict();
     }
 
+    public void setDistrict(){
+        String[] str = address.split(" ");
+        this.district = String.format("%s %s", str[0], str[1]);
+    }
 
     public String getId() {
         return id;
