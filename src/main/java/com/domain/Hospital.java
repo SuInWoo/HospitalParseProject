@@ -14,10 +14,9 @@ public class Hospital {
 
         String[] str = district.split(" ");
 
-//        this.id = id.replaceAll("\"", "");
         this.id = id;
         this.address = address;
-        this.district = str[0] + str[1];
+        this.district = str[0] + " " + str[1];
         this.category = category;
         this.emergencyRoom = emergencyRoom;
         this.name = name;
