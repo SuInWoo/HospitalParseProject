@@ -29,7 +29,6 @@ public class LineReader<T> {
             br.readLine();
         }
         while ((str = br.readLine()) != null) {
-            System.out.println(str);
             result.add(parser.parse(str));
         }
         return result;
