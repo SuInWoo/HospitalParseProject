@@ -9,14 +9,11 @@ public class Hospital {
     private String name; // snake camel
     private String subdivision; // snake camel
 
-    public Hospital(String id, String address, String district, String category, String emergencyRoom,
+    public Hospital(String id, String address, String category, String emergencyRoom,
                     String name, String subdivision) {
-
-        String[] str = district.split(" ");
 
         this.id = id;
         this.address = address;
-        this.district = str[0] + " " + str[1];
         this.category = category;
         this.emergencyRoom = emergencyRoom;
         this.name = name;
@@ -33,7 +30,8 @@ public class Hospital {
     }
 
     public String getDistrict() {
-        return district;
+        String[] splitted = this.address.split(" ");
+        return String.format("%s %s", splitted[0], splitted[1]);
     }
 
     public String getCategory() {
