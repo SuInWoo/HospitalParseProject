@@ -11,9 +11,6 @@ public class Hospital {
 
     public Hospital(String id, String address, String district, String category, String emergencyRoom,
                     String name, String subdivision) {
-
-
-
         this.id = id;
         this.address = address;
         this.category = category;
@@ -54,5 +51,11 @@ public class Hospital {
 
     public String getSubdivision() {
         return subdivision;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + "\"" + id + "\"," + "\"" + address + "\"," + "\"" + district + "\"," + "\"" + category + "\"," +
+                "\"" + emergencyRoom + "\"," + "\"" + name + "\"," + "\"" + subdivision + "\"" + ")";
     }
 }
