@@ -33,17 +33,13 @@ public class Hospital {
         return address;
     }
 
-    public String getDistrict() {
-        return district;
-    }
+    public String getDistrict() { return district; }
 
     public String getCategory() {
         return category;
     }
 
-    public String getEmergencyRoom() {
-        return emergencyRoom;
-    }
+    public String getEmergencyRoom() { return emergencyRoom; }
 
     public String getName() {
         return name;
@@ -53,9 +49,10 @@ public class Hospital {
         return subdivision;
     }
 
+
     @Override
     public String toString() {
-        return "(" + "\"" + id + "\"," + "\"" + address + "\"," + "\"" + district + "\"," + "\"" + category + "\"," +
-                "\"" + emergencyRoom + "\"," + "\"" + name + "\"," + "\"" + subdivision + "\"" + ")";
+        return "(" + "\"" + this.id + "\"," + "\"" + this.address + "\"," + "\"" + this.district + "\"," + "\"" + this.category + "\"," +
+                "\"" + this.emergencyRoom + "\"," + "\"" + this.name + "\"," + "\"" + this.subdivision + "\"" + ")";
     }
 }
