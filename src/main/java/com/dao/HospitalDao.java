@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class HospitalDao {
 
+    // Connection 분리
     private Connection getConnection() throws ClassNotFoundException, SQLException {
         Map<String, String> env = System.getenv();
         String dbHost = env.get("DB_HOST");
@@ -20,7 +21,7 @@ public class HospitalDao {
     }
 
     public void add() throws SQLException, ClassNotFoundException {
-        Connection conn = getConnection();
+        Connection conn = getConnection();  //db연결
 
         PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, address, district, category, " +
                 "emergency_room, name, subdivision VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -38,7 +39,7 @@ public class HospitalDao {
     }
 
     public Hospital get(String id) throws ClassNotFoundException, SQLException {
-        Connection conn = getConnection();
+        Connection conn = getConnection();  //db연결
 
         PreparedStatement ps = conn.prepareStatement("SELECT id, address, district, category, emergency_room," +
                 " name, subdivision FROM `seoul_hospital` WHERE id = ?");
