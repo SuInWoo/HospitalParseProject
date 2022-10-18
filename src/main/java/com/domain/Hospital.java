@@ -9,6 +9,9 @@ public class Hospital {
     private String name; // snake camel
     private String subdivision; // snake camel
 
+    public Hospital() {
+    }
+
     public Hospital(String id, String address, String district, String category, String emergencyRoom,
                     String name, String subdivision) {
         this.id = id;
