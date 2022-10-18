@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class Connector {
+public class Connector implements ConnectorFace{
 
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         Map<String, String> env = System.getenv();
