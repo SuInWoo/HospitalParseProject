@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HospitalDaoTest {
 
-    String case1 = "hospital1, \"A1120837\", \"서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동)\",\n" +
+    String case1 = "\"A1120837\", \"서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동)\",\n" +
             "\"서울특별시 금천구\", \"C\", \"2\", \"가산기대찬의원\", \"분류 불가\"";
 
     @Test
@@ -22,6 +22,6 @@ class HospitalDaoTest {
 
         Hospital hospital = hospitalDao.get("A1120837");
 
-        assertEquals("A1120837", hospital.getId());
+        assertEquals("가산기대찬의원", hospital.getName());
     }
 }
