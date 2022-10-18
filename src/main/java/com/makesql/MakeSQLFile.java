@@ -1,4 +1,4 @@
-package com;
+package com.makesql;
 
 import com.domain.Hospital;
 

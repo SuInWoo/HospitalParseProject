@@ -1,6 +1,8 @@
 package com;
 
 import com.domain.Hospital;
+import com.makesql.LineReader;
+import com.makesql.MakeSQLFile;
 import com.parser.HospitalParser;
 
 import java.io.IOException;

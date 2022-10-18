@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class ConnectorImpl implements Connector {
+public class AWSConnectionMaker implements Connector {
 
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         Map<String, String> env = System.getenv();

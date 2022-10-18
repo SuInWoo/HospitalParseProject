@@ -16,8 +16,8 @@ class HospitalDaoTest {
     @Test
     @DisplayName("Select Test")
     void select() throws SQLException, ClassNotFoundException {
-        ConnectorImpl connectorImpl = new ConnectorImpl();
-        HospitalDao hospitalDao = new HospitalDao(connectorImpl);
+        AWSConnectionMaker AWSConnectionMaker = new AWSConnectionMaker();
+        HospitalDao hospitalDao = new HospitalDao(AWSConnectionMaker);
 
         Hospital hospital = hospitalDao.get("A1120837");
 

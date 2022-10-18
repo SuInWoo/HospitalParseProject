@@ -1,4 +1,4 @@
-package com;
+package com.makesql;
 
 import com.parser.Parser;
 
@@ -21,7 +21,7 @@ public class LineReader<T> {
         this.isRemoveColumnName = isRemoveColumnName;
     }
 
-    List<T> readLines(String filename) throws IOException {
+    public List<T> readLines(String filename) throws IOException {
         List<T> result = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String str;
