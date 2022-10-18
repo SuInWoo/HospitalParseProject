@@ -1,14 +1,14 @@
 package com;
 
-import com.dao.Connector;
+import com.dao.ConnectorImpl;
 import com.dao.HospitalDao;
 import com.domain.Hospital;
 import java.sql.SQLException;
 
 public class HospitalMain {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Connector connector = new Connector();
-        HospitalDao hospitalDao = new HospitalDao(connector);
+        ConnectorImpl connectorImpl = new ConnectorImpl();
+        HospitalDao hospitalDao = new HospitalDao(connectorImpl);
 
 //        hospitalDao.add(new Hospital("", "", "", "", "", "", ""));
         Hospital hospital = hospitalDao.get("A1120837");

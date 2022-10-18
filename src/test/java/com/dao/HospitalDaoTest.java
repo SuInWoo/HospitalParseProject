@@ -1,7 +1,6 @@
 package com.dao;
 
 import com.domain.Hospital;
-import com.parser.HospitalParser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,8 +16,8 @@ class HospitalDaoTest {
     @Test
     @DisplayName("Select Test")
     void select() throws SQLException, ClassNotFoundException {
-        Connector connector = new Connector();
-        HospitalDao hospitalDao = new HospitalDao(connector);
+        ConnectorImpl connectorImpl = new ConnectorImpl();
+        HospitalDao hospitalDao = new HospitalDao(connectorImpl);
 
         Hospital hospital = hospitalDao.get("A1120837");
 

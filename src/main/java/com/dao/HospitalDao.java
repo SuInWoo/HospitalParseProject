@@ -6,14 +6,14 @@ import java.sql.*;
 
 public class HospitalDao {
 
-    private Connector connector;
+    private ConnectorImpl connectorImpl;
 
-    public HospitalDao(Connector connector) {
-        this.connector = connector;
+    public HospitalDao(ConnectorImpl connectorImpl) {
+        this.connectorImpl = connectorImpl;
     }
 
     public void add(Hospital hospital) throws SQLException, ClassNotFoundException {
-        Connection conn = connector.getConnection();  //db연결
+        Connection conn = connectorImpl.getConnection();  //db연결
 
         PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, address, district, category, " +
                 "emergency_room, name, subdivision VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -31,7 +31,7 @@ public class HospitalDao {
     }
 
     public Hospital get(String id) throws ClassNotFoundException, SQLException {
-        Connection conn = connector.getConnection();  //db연결
+        Connection conn = connectorImpl.getConnection();  //db연결
 
         PreparedStatement ps = conn.prepareStatement("SELECT id, address, district, category, emergency_room," +
                 " name, subdivision FROM `seoul_hospital` WHERE id = ?");
