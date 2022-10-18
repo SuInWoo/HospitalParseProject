@@ -7,6 +7,29 @@ import java.util.Map;
 
 public class HospitalDao {
 
+    public void add() throws SQLException, ClassNotFoundException {
+        Map<String, String> env = System.getenv();
+        String dbHost = env.get("DB_HOST");
+        String dbUser = env.get("DB_USER");
+        String dbPassword = env.get("DB_PASSWORD");
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);  //db연결
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, address, district, category, emergency_room, name, subdivision) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)");
+        ps.setString(1, "");
+        ps.setString(2, "");
+        ps.setString(3, "");
+        ps.setString(4, "");
+        ps.setString(5, "");
+        ps.setString(6, "");
+        ps.setString(7, "");
+
+        ps.executeUpdate(); //ctrl + enter
+        ps.close();
+        conn.close();
+    }
+
     public Hospital get(String id) throws ClassNotFoundException, SQLException {
         Map<String, String> env = System.getenv();
         String dbHost = env.get("DB_HOST");
