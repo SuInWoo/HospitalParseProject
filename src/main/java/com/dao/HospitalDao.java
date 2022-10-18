@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class HospitalDao {
 
-    public void add() throws SQLException, ClassNotFoundException {
+    private Connection getConnection() throws ClassNotFoundException, SQLException {
         Map<String, String> env = System.getenv();
         String dbHost = env.get("DB_HOST");
         String dbUser = env.get("DB_USER");
@@ -15,6 +15,12 @@ public class HospitalDao {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);  //db연결
+
+        return conn;
+    }
+
+    public void add() throws SQLException, ClassNotFoundException {
+        Connection conn = getConnection();
         PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, address, district, category, emergency_room, name, subdivision) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)");
         ps.setString(1, "");
@@ -31,14 +37,7 @@ public class HospitalDao {
     }
 
     public Hospital get(String id) throws ClassNotFoundException, SQLException {
-        Map<String, String> env = System.getenv();
-        String dbHost = env.get("DB_HOST");
-        String dbUser = env.get("DB_USER");
-        String dbPassword = env.get("DB_PASSWORD");
-
-
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);  //db연결
+        Connection conn = getConnection();
         PreparedStatement ps = conn.prepareStatement("SELECT id, address, district, category, emergency_room," +
                 " name, subdivision FROM `seoul_hospital` WHERE id = ?");
         ps.setString(1, id);
@@ -56,7 +55,7 @@ public class HospitalDao {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         HospitalDao hospitalDao = new HospitalDao();
-//            userDao.add();
+//            hospital.add();
         Hospital hospital = hospitalDao.get("A1120837");
         System.out.printf("#id: %s\n#address: %s\n#district: %s\n#category: %s\n#emergency_room: %s\n#name: %s\n#subdivision: %s\n",
                 hospital.getId(), hospital.getAddress(), hospital.getDistrict(), hospital.getCategory(), hospital.getEmergencyRoom(),
