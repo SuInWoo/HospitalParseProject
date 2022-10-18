@@ -12,18 +12,18 @@ public class HospitalDao {
         this.connector = connector;
     }
 
-    public void add() throws SQLException, ClassNotFoundException {
+    public void add(Hospital hospital) throws SQLException, ClassNotFoundException {
         Connection conn = connector.getConnection();  //db연결
 
         PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, address, district, category, " +
                 "emergency_room, name, subdivision VALUES (?, ?, ?, ?, ?, ?, ?)");
-        ps.setString(1, "");
-        ps.setString(2, "");
-        ps.setString(3, "");
-        ps.setString(4, "");
-        ps.setString(5, "");
-        ps.setString(6, "");
-        ps.setString(7, "");
+        ps.setString(1, hospital.getId());
+        ps.setString(2, hospital.getAddress());
+        ps.setString(3, hospital.getDistrict());
+        ps.setString(4, hospital.getCategory());
+        ps.setString(5, hospital.getEmergencyRoom());
+        ps.setString(6, hospital.getName());
+        ps.setString(7, hospital.getSubdivision());
 
         ps.executeUpdate(); //ctrl + enter
         ps.close();
