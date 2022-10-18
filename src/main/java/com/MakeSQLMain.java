@@ -6,7 +6,7 @@ import com.parser.HospitalParser;
 import java.io.IOException;
 import java.util.List;
 
-public class Main {
+public class MakeSQLMain {
     public static void main(String[] args) throws IOException {
         LineReader<Hospital> hospitalLineReader = new LineReader<>(new HospitalParser());
         String filename = "/Users/suin/Downloads/수업 데이터 파일/seoul_hospital.csv";

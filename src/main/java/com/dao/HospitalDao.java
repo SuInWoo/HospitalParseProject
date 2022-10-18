@@ -3,25 +3,17 @@ package com.dao;
 import com.domain.Hospital;
 
 import java.sql.*;
-import java.util.Map;
 
 public class HospitalDao {
 
-    // Connection 분리
-    private Connection getConnection() throws ClassNotFoundException, SQLException {
-        Map<String, String> env = System.getenv();
-        String dbHost = env.get("DB_HOST");
-        String dbUser = env.get("DB_USER");
-        String dbPassword = env.get("DB_PASSWORD");
+    private Connector connector;
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);  //db연결
-
-        return conn;
+    public HospitalDao(Connector connector) {
+        this.connector = connector;
     }
 
     public void add() throws SQLException, ClassNotFoundException {
-        Connection conn = getConnection();  //db연결
+        Connection conn = connector.getConnection();  //db연결
 
         PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, address, district, category, " +
                 "emergency_room, name, subdivision VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -39,7 +31,7 @@ public class HospitalDao {
     }
 
     public Hospital get(String id) throws ClassNotFoundException, SQLException {
-        Connection conn = getConnection();  //db연결
+        Connection conn = connector.getConnection();  //db연결
 
         PreparedStatement ps = conn.prepareStatement("SELECT id, address, district, category, emergency_room," +
                 " name, subdivision FROM `seoul_hospital` WHERE id = ?");
@@ -57,15 +49,5 @@ public class HospitalDao {
         conn.close();
 
         return hospital;
-    }
-
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        HospitalDao hospitalDao = new HospitalDao();
-//            hospital.add();
-        Hospital hospital = hospitalDao.get("A1120837");
-        System.out.printf("#id: %s\n#address: %s\n#district: %s\n#category: %s\n#emergency_room: %s\n#name: %s\n#subdivision: %s\n",
-                hospital.getId(), hospital.getAddress(), hospital.getDistrict(),
-                hospital.getCategory(), hospital.getEmergencyRoom(), hospital.getName(),
-                hospital.getSubdivision());
     }
 }
