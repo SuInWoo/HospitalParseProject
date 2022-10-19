@@ -8,10 +8,8 @@ import com.domain.User;
 import java.sql.SQLException;
 
 public class UserMain {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        AWSConnectionMaker awsConnectionMaker = new AWSConnectionMaker();
-        LocalConnectionMaker localConnectionMaker = new LocalConnectionMaker();
-        UserDao userDao = new UserDao(awsConnectionMaker);
+    public static void main(String[] args) throws SQLException {
+        UserDao userDao = new UserDao(new AWSConnectionMaker());
 
 //        hospitalDao.add(new Hospital("", "", "", "", "", "", ""));
         User user = userDao.get("1");
