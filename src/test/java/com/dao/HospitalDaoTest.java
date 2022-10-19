@@ -15,10 +15,10 @@ class HospitalDaoTest {
 
     @Test
     @DisplayName("Select Test")
-    void select() throws SQLException, ClassNotFoundException {
-        AWSConnectionMaker AWSConnectionMaker = new AWSConnectionMaker();
-        HospitalDao hospitalDao = new HospitalDao(AWSConnectionMaker);
+    void select() throws SQLException {
+//        HospitalDao hospitalDao = new HospitalDao(AWSConnectionMaker);
 
+        HospitalDao hospitalDao = new HospitalDaoFactory().awsUserDao();
         Hospital hospital = hospitalDao.get("A1120837");
 
         assertEquals("가산기대찬의원", hospital.getName());

@@ -12,7 +12,7 @@ public class HospitalDao {
         this.connectionMaker = connectionMaker;
     }
 
-    public void add(Hospital hospital) throws SQLException, ClassNotFoundException {
+    public void add(Hospital hospital) throws SQLException {
         Connection conn = connectionMaker.getConnection();  //db연결
 
         PreparedStatement ps = conn.prepareStatement("INSERT INTO users(id, address, district, category, " +
@@ -30,7 +30,7 @@ public class HospitalDao {
         conn.close();
     }
 
-    public Hospital get(String id) throws ClassNotFoundException, SQLException {
+    public Hospital get(String id) throws SQLException {
         Connection conn = connectionMaker.getConnection();  //db연결
 
         PreparedStatement ps = conn.prepareStatement("SELECT id, address, district, category, emergency_room," +

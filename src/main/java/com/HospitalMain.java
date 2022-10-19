@@ -7,8 +7,7 @@ import java.sql.SQLException;
 
 public class HospitalMain {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        AWSConnectionMaker AWSConnectionMaker = new AWSConnectionMaker();
-        HospitalDao hospitalDao = new HospitalDao(AWSConnectionMaker);
+        HospitalDao hospitalDao = new HospitalDao(new AWSConnectionMaker());
 
 //        hospitalDao.add(new Hospital("", "", "", "", "", "", ""));
         Hospital hospital = hospitalDao.get("A1120837");
